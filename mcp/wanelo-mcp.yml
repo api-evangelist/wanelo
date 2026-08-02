@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://wanelo.com/llms.txt
+server:
+  name: wanelo-ucp-shopping
+  description: >-
+    Wanelo's storefront exposes an agent-facing commerce MCP server via the
+    Universal Commerce Protocol (UCP, ucp.dev). The store is built on Shopify;
+    the MCP transport lets buyer agents search the catalog, build a cart, and
+    run a human-approved checkout. Discovered from /.well-known/ucp and /llms.txt.
+  transport: http
+  protocol: ucp
+  ucp_version: '2026-04-08'
+  ucp_supported_versions:
+    - '2026-04-08'
+    - '2026-01-23'
+  url: https://wanelo.com/api/ucp/mcp
+  discovery: https://wanelo.com/.well-known/ucp
+  service: dev.ucp.shopping
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+# Tools documented in the store's /llms.txt agent flow. The MCP tools/list
+# call requires an agent profile URI (returned -32001 invalid_profile_url
+# without one), so these are the published flow verbs, not a live introspection.
+tools:
+  - name: search_catalog
+    description: Find products matching the buyer's intent.
+    capability: dev.ucp.shopping.catalog.search
+  - name: create_cart
+    description: Add desired items to a cart.
+    capability: dev.ucp.shopping.cart
+  - name: create_checkout
+    description: Start the purchase flow.
+    capability: dev.ucp.shopping.checkout
+  - name: update_checkout
+    description: Set shipping address and method.
+    capability: dev.ucp.shopping.fulfillment
+  - name: complete_checkout
+    description: Finalize the purchase — buyer must approve payment.
+    capability: dev.ucp.shopping.checkout
+rules:
+  - Checkout requires contemporaneous human approval; agents must not complete payment without explicit buyer consent.
+  - Rate-limited per IP; back off on HTTP 429.
+  - Pass context.address_country and context.currency for accurate pricing and availability.
+notes: >-
+  The Shop skill (https://shop.app/SKILL.md) is the provider-recommended path
+  for personal-shopping agents to transact across Shopify stores via Shop Pay.

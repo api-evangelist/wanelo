@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://wanelo.com/.well-known/openid-configuration
+docs: https://wanelo.com/.well-known/openid-configuration
+schemes:
+  - name: shopifyCustomerAccount
+    source: well-known/wanelo-openid-configuration.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://shopify.com/authentication/69560926386/oauth/authorize
+        tokenUrl: https://shopify.com/authentication/69560926386/oauth/token
+scopes:
+  - scope: openid
+    description: OpenID Connect authentication (issue an ID token).
+    flows: [authorizationCode]
+    sources: [well-known/wanelo-openid-configuration.json]
+  - scope: email
+    description: Access the customer's email address and verification status.
+    flows: [authorizationCode]
+    sources: [well-known/wanelo-openid-configuration.json]
+  - scope: customer-account-api:full
+    description: Full access to the Shopify Customer Account API on the buyer's behalf.
+    flows: [authorizationCode]
+    sources: [well-known/wanelo-openid-configuration.json]
+  - scope: customer-account-mcp-api:full
+    description: Full access to the Shopify Customer Account MCP API (agent-driven customer/commerce actions).
+    flows: [authorizationCode]
+    sources: [well-known/wanelo-openid-configuration.json]

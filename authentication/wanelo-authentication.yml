@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://wanelo.com/.well-known/openid-configuration
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  provider: Shopify Customer Accounts
+  note: >-
+    wanelo.com is a Shopify storefront; buyer/customer authentication is delegated
+    to Shopify's Customer Account identity provider (issuer
+    https://shopify.com/authentication/69560926386). Read-only catalog browsing
+    (products/collections/search JSON) requires no authentication.
+schemes:
+  - name: shopifyCustomerAccount
+    type: openIdConnect
+    openIdConnectUrl: https://wanelo.com/.well-known/openid-configuration
+    issuer: https://shopify.com/authentication/69560926386
+    authorization_endpoint: https://shopify.com/authentication/69560926386/oauth/authorize
+    token_endpoint: https://shopify.com/authentication/69560926386/oauth/token
+    end_session_endpoint: https://shopify.com/authentication/69560926386/logout
+    jwks_uri: https://shopify.com/authentication/69560926386/.well-known/jwks.json
+    response_types_supported: [code]
+    grant_types_supported:
+      - authorization_code
+      - refresh_token
+      - urn:ietf:params:oauth:grant-type:jwt-bearer
+    code_challenge_methods_supported: [S256]
+    token_endpoint_auth_methods_supported: [client_secret_basic]
+    id_token_signing_alg_values_supported: [RS256]
+    sources: [well-known/wanelo-openid-configuration.json]

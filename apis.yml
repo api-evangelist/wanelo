@@ -1,7 +1,28 @@
 aid: wanelo
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wanelo.png
 name: wanelo
-description: wanelo is a company surfaced as a portfolio company of slow-ventures and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  wanelo ("The intelligent everything store") is an AI-powered shopping storefront
+  offering natural-language and visual product discovery, personalized
+  recommendations, and a buy-for-me assistant, built on Shopify. It exposes an
+  agent-commerce surface via the Universal Commerce Protocol (UCP, ucp.dev) with a
+  hosted MCP endpoint for catalog search, cart, and buyer-approved checkout, plus
+  Shopify Customer Account OAuth/OpenID Connect and a published /llms.txt (mirroring
+  /agents.md). Originally a social-shopping product backed by Slow Ventures,
+  wanelo.com now operates as an agent-ready commerce store. Read-only catalog
+  browsing (products/collections/search JSON) requires no authentication.
 url: https://raw.githubusercontent.com/api-evangelist/wanelo/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,10 +32,37 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Shopping
+- Ecommerce
+- Retail
+- Commerce
+- Agent Commerce
+- MCP
+- Shopify
+- AI
+apis:
+- name: Wanelo Commerce (UCP)
+  description: >-
+    Agent-facing commerce surface for the wanelo.com storefront: a Universal
+    Commerce Protocol (UCP) MCP endpoint for search/cart/checkout, Shopify
+    Customer Account OAuth/OIDC, and unauthenticated Shopify Storefront JSON
+    (products/collections/search).
+  humanURL: https://wanelo.com/llms.txt
+  baseURL: https://wanelo.com
+  tags:
+  - Commerce
+  - Agent Commerce
+  - MCP
+  properties:
+  - type: MCPServer
+    url: mcp/wanelo-mcp.yml
+  - type: Authentication
+    url: authentication/wanelo-authentication.yml
+  - type: OAuthScopes
+    url: scopes/wanelo-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +71,28 @@ maintainers:
 common:
 - type: Website
   url: https://wanelo.com
+- type: LLMsTxt
+  url: llms/wanelo-llms.txt
+- type: WellKnown
+  url: well-known/wanelo-well-known.yml
+- type: MCPServer
+  url: mcp/wanelo-mcp.yml
+- type: Authentication
+  url: authentication/wanelo-authentication.yml
+- type: OAuthScopes
+  url: scopes/wanelo-scopes.yml
+- type: Conventions
+  url: conventions/wanelo-conventions.yml
+- type: Conformance
+  url: conformance/wanelo-conformance.yml
+- type: DomainSecurity
+  url: security/wanelo-domain-security.yml
+- type: PrivacyPolicy
+  url: https://wanelo.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://wanelo.com/policies/terms-of-service
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 8
+  pass: local-v1

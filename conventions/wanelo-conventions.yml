@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://wanelo.com/llms.txt
+summary: >-
+  Cross-cutting conventions for the wanelo.com storefront (a Shopify store with
+  a Universal Commerce Protocol / MCP agent surface). Derived from the published
+  /llms.txt agent instructions and the Shopify Storefront JSON conventions.
+authentication:
+  style: oauth2 / openIdConnect (Shopify Customer Accounts)
+  anonymous_read: true
+  note: Read-only catalog browsing needs no auth; transacting uses buyer-approved OAuth.
+  ref: authentication/wanelo-authentication.yml
+agent_commerce:
+  protocol: Universal Commerce Protocol (ucp.dev)
+  version: '2026-04-08'
+  discovery: https://wanelo.com/.well-known/ucp
+  mcp_endpoint: https://wanelo.com/api/ucp/mcp
+  buyer_approval_required: true
+  context_params: [address_country, currency]
+read_endpoints:
+  products_json: GET /products/{handle}.json
+  collections_json: GET /collections/{handle}/products.json
+  all_products: GET /collections/all
+  search: GET /search?q={query}&type=product
+  sitemap: GET /sitemap.xml
+rate_limiting:
+  signaled: true
+  mechanism: HTTP 429 with back-off (MCP endpoint rate-limited per IP)
+  source: https://wanelo.com/llms.txt
+versioning:
+  scheme: ucp-dated
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+idempotency:
+  supported: false
+  note: No idempotency-key contract is documented for this storefront surface.
+error_envelope:
+  mcp: JSON-RPC 2.0 error object (e.g. code -32001 UCP discovery failed)

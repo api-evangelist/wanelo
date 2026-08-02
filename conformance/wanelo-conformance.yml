@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://wanelo.com/.well-known/ucp
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server publishes RFC 8414 authorization-server metadata (Shopify Customer Accounts)
+  - id: oidc
+    conforms: true
+    evidence: /.well-known/openid-configuration publishes OpenID Connect Discovery 1.0 metadata
+  - id: rfc8414-oauth-as-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200 with issuer/token/authorization endpoints
+  - id: pkce
+    conforms: true
+    evidence: code_challenge_methods_supported = [S256]
+  - id: ucp-shopping
+    conforms: true
+    evidence: /.well-known/ucp advertises dev.ucp.shopping service (Universal Commerce Protocol 2026-04-08) with MCP + embedded transports
+  - id: mcp
+    conforms: true
+    evidence: UCP profile exposes an MCP transport endpoint at /api/ucp/mcp with schema mcp.openrpc.json
+  - id: llmstxt
+    conforms: true
+    evidence: /llms.txt (and /agents.md) publish agent operating instructions
