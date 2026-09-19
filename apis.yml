@@ -50,7 +50,7 @@ tags:
 - E-Commerce
 - Retail
 - Commerce
-- Agent Commerce
+- Agentic Commerce
 - MCP
 - Shopify
 - Artificial Intelligence
@@ -74,6 +74,10 @@ apis:
   humanURL: https://wanelo.com/llms.txt
   baseURL: https://wanelo.com
   tags:
+  - Commerce
+  - Agentic Commerce
+  - MCP
+  tags_raw:
   - Commerce
   - Agent Commerce
   - MCP
