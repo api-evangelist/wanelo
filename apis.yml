@@ -72,7 +72,6 @@ apis:
     Customer Account OAuth/OIDC, and unauthenticated Shopify Storefront JSON
     (products/collections/search).
   humanURL: https://wanelo.com/llms.txt
-  baseURL: https://wanelo.com
   tags:
   - Commerce
   - Agentic Commerce
@@ -88,6 +87,9 @@ apis:
     url: authentication/wanelo-authentication.yml
   - type: OAuthScopes
     url: scopes/wanelo-scopes.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
