@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/wanelo/integrations
+- https://n8n.io/integrations/wanelo/
+- https://composio.dev/toolkits/wanelo
+- https://monid.ai/tools/wanelo
+checked:
+- https://composio.dev/toolkits/wanelo
+- https://monid.ai/tools/wanelo
+- https://n8n.io/integrations/wanelo/
+- https://zapier.com/apps/wanelo/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
